@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Net.Sockets;
 using UnityEngine;
 
@@ -39,6 +40,23 @@ namespace GameServer
                 _receiveBuffer = new byte[_dataBufferSize];
     
                 _stream.BeginRead(_receiveBuffer, 0, _dataBufferSize, ReceiveCallBack, null);
+
+                ServerSend.Welcome(id, "Welcome to my server");
+            }
+
+            public void SendData(Packet packet)
+            {
+                try
+                {
+                    if(socket != null)
+                    {
+                        _stream.BeginWrite(packet.ToArray(), 0, packet.Length(), null, null);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"Error sending packet:{ex} to player: {id}");
+                }
             }
     
             private void ReceiveCallBack(IAsyncResult _result)
