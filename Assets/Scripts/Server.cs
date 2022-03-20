@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
 
+
 public class Server
 {
     public static int MaxPlayers { get; private set; }
@@ -127,10 +128,14 @@ public class Server
 
         packetHandlers = new Dictionary<int, PacketHandler>()
         {
-            { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
-            { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
-            { (int)ClientPackets.playerShoot, ServerHandle.PlayerShoot },
-            { (int)ClientPackets.playerThrowItem, ServerHandle.PlayerThrowItem }
+            { (int) ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
+            { (int) ClientPackets.playerMovement, ServerHandle.PlayerMovement },
+            { (int) ClientPackets.playerAnimationBool,ServerHandle.PlayerAnimationBool },
+            { (int) ClientPackets.playerAnimationTrigger,ServerHandle.PlayerAnimationTrigger },
+            { (int) ClientPackets.playerRotation,ServerHandle.ReceivePlayerRotation },
+            { (int) ClientPackets.invokeFirstSkill,ServerHandle.InvokeFirstSkill },
+            { (int) ClientPackets.playerShoot, ServerHandle.PlayerShoot },
+            { (int) ClientPackets.playerThrowItem, ServerHandle.PlayerThrowItem }
         };
         Debug.Log("Initialized packets.");
     }

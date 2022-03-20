@@ -9,20 +9,13 @@ public enum ServerPackets
 {
     welcome = 1,
     spawnPlayer,
-    playerPosition,
-    playerRotation,
     playerDisconnected,
+    spawnEnemy,
     playerHealth,
     playerRespawned,
     createItemSpawner,
     itemSpawned,
     itemPickedUp,
-    spawnProjectile,
-    projectilePosition,
-    projectileExploded,
-    spawnEnemy,
-    enemyPosition,
-    enemyHealth
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -30,6 +23,10 @@ public enum ClientPackets
 {
     welcomeReceived = 1,
     playerMovement,
+    playerAnimationBool,
+    playerAnimationTrigger,
+    playerRotation,
+    invokeFirstSkill,
     playerShoot,
     playerThrowItem
 }
@@ -370,13 +367,14 @@ public class Packet : IDisposable
     {
         return new Vector3(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
     }
-
+    
     /// <summary>Reads a Quaternion from the packet.</summary>
     /// <param name="_moveReadPos">Whether or not to move the buffer's read position.</param>
     public Quaternion ReadQuaternion(bool _moveReadPos = true)
     {
         return new Quaternion(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
     }
+
     #endregion
 
     private bool disposed = false;

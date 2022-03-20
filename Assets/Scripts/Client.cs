@@ -79,7 +79,6 @@ public class Client
                 int _byteLength = stream.EndRead(_result);
                 if (_byteLength <= 0)
                 {
-                    Debug.Log("3");
                     Server.clients[id].Disconnect();
                     return;
                 }
@@ -213,6 +212,10 @@ public class Client
     public void SendIntoGame(string _playerName)
     {
         player = NetworkManager.instance.InstantiatePlayer();
+
+        NetworkManager.instance.InstantiateEnemy(new Vector3(241.7063f,2.753332f,141.3291f));
+        NetworkManager.instance.InstantiateEnemy(new Vector3(238,2.753332f,146));
+        
         player.Initialize(id, _playerName);
 
         // Send all players to the new player

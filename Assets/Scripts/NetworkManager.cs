@@ -47,9 +47,10 @@ public class NetworkManager : MonoBehaviour
             .AddComponent<Player>();
     }
 
-    public void InstantiateEnemy(Vector3 _position)
+    public void InstantiateEnemy(Vector3 position)
     {
-        Instantiate(enemyPrefab, _position, Quaternion.identity);
+        Instantiate(enemyPrefab, position, Quaternion.identity);
+        ServerSend.SendSpawnEnemy(position);
     }
     
 }

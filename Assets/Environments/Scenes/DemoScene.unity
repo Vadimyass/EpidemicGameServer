@@ -841,8 +841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a662e85cdc4cbab083b36fd9177c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  smoothness: 0.394
 --- !u!4 &763089204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4243724423293762, guid: c07f24e35f07ce74ba43afa35d48adf7, type: 3}
@@ -969,6 +967,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4809790375507166696, guid: 0ebd26c1bf4c17e4f830d386789fedb9, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 8485933704031198776, guid: af6e7bcd45160684783f21934502bdf7, type: 3}
     - target: {fileID: 4809790375507166698, guid: 0ebd26c1bf4c17e4f830d386789fedb9, type: 3}
       propertyPath: m_Name
       value: NetworkManager
