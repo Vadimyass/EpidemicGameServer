@@ -26,6 +26,7 @@ public class ServerHandle
     {
         Vector3 positionInput = packet.ReadVector3();
         Vector3 vectorInput = packet.ReadVector3();
+        uint tick = (uint) packet.ReadInt();
         Server.clients[fromClient].player.SetInput(positionInput,vectorInput);
         ServerSend.SendUDPDataToAll(fromClient ,packet);
     }
